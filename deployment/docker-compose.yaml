@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:13.3
+    container_name: postgres-container
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: homeService
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpwdhs
+    ports:
+      - "5430:5432"
+    volumes:
+      - pgdata-hs:/var/lib/postgresql/data
+      - ../assets/postgres/init.sql:/docker-entrypoint-initdb.d/init-db.sql
+volumes:
+  pgdata-hs:
+

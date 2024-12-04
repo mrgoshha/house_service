@@ -38,6 +38,7 @@ func (f *Flat) Validate() error {
 		validation.Field(&f.HouseId, validation.Required, validation.Min(1)),
 		validation.Field(&f.Price, validation.Required, validation.Min(0)),
 		validation.Field(&f.Rooms, validation.Required, validation.Min(1)),
+		validation.Field(&f.Status, validation.Required),
 	)
 }
 
@@ -45,6 +46,7 @@ func (f *FlatUpdate) Validate() error {
 	return validation.ValidateStruct(
 		f,
 		validation.Field(&f.Id, validation.Required, validation.Min(1)),
+		validation.Field(&f.Status, validation.Required),
 	)
 }
 

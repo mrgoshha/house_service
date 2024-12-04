@@ -30,6 +30,8 @@ type HouseCreate struct {
 func (f *House) Validate() error {
 	return validation.ValidateStruct(
 		f,
+		validation.Field(&f.Address, validation.Required),
+		validation.Field(&f.Year, validation.Required, validation.Min(1)),
 		validation.Field(&f.Year, validation.Required, validation.Min(1)),
 	)
 }

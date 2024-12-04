@@ -34,6 +34,7 @@ func (u *User) Validate() error {
 		validation.Field(&u.Id, validation.Required, is.UUID),
 		validation.Field(&u.Email, validation.Required, is.Email),
 		validation.Field(&u.Password, validation.Length(6, 100)),
+		validation.Field(&u.UserType, validation.Required),
 	)
 }
 
@@ -41,6 +42,6 @@ func (u *UserLogin) Validate() error {
 	return validation.ValidateStruct(
 		u,
 		validation.Field(&u.Id, validation.Required, is.UUID),
-		validation.Field(&u.Password, validation.Length(6, 100)),
+		validation.Field(&u.Password, validation.Required, validation.Length(6, 100)),
 	)
 }

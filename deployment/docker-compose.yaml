@@ -1,4 +1,21 @@
 services:
+  house-service:
+    image: house-service
+    container_name: hs-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_DB: homeService
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpwdhs
+      POSTGRES_PORTS: 5432
+      POSTGRES_HOST: postgres
+      HTTP_PORT: 8080
+      HTTP_HOST: house-service
+      HTTP_WRITE_TIMEOUT: 15s
+      HTTP_READ_TIMEOUT: 15s
   postgres:
     image: postgres:13.3
     container_name: postgres-container

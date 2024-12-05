@@ -20,7 +20,7 @@ type App struct {
 	log             *slog.Logger
 	db              *sqlx.DB
 	httpServer      *http.Server
-	serviceProvider *serviceProvider
+	serviceProvider *ServiceProvider
 	tokenManager    *auth.Manager
 }
 
@@ -129,7 +129,7 @@ func (a *App) initTokenManager() error {
 }
 
 func (a *App) initServiceProvider() error {
-	a.serviceProvider = newServiceProvider(a.log, a.db, a.tokenManager)
+	a.serviceProvider = NewServiceProvider(a.log, a.db, a.tokenManager)
 	return nil
 }
 

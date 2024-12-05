@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+//go:generate mockgen -source=manager.go -destination=mocks/mock_manager.go
+
 type TokenManager interface {
 	NewJWT(userId, userType string) (string, error)
 	Parse(accessToken string) (string, string, error)
